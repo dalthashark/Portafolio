@@ -3,7 +3,7 @@ import miFoto from '../../assets/portrait-placeholder.svg';
 
 const Banner = () => {
   return (
-    <section className="hero-section">
+    <section className="hero-section" id="inicio">
       <div className="hero-content">
         {/* 1. Etiqueta de Estado (Badge) */}
         <div className="status-badge">
@@ -22,22 +22,22 @@ const Banner = () => {
 
         {/* 3. Título Principal */}
         <h1 className="hero-title">
-          Giancarlos <br />
-          <span className="text-cyan">Barboza</span>
+          <span className="text-white">Mendoza Chavez</span> <br />
+          <span className="text-cyan">Sebastián</span>
         </h1>
 
         {/* 4. Subtítulo (Rol) */}
         <h2 className="hero-subtitle">
-          Consultor e Instructor BI - Software | MOS Excel Expert | Power BI
-          Data Analyst | Ingeniero de Sistemas
+          Estudiante de Ingeniería de Software • Frontend • React • SQL •
+          Python • Web
         </h2>
 
         {/* 5. Descripción */}
         <p className="hero-description">
-          Construyo sistemas inteligentes que automatizan procesos, analizan
-          datos y transforman la información. También desarrollo aplicaciones
-          web funcionales para resolver necesidades reales. Consultoría de
-          Software y BI para empresas.
+          Soy estudiante de Ingeniería de Software con interés en el desarrollo
+          web, la lógica de programación y la creación de soluciones prácticas.
+          Me gusta aprender nuevas tecnologías y aplicarlas para construir
+          proyectos funcionales, ordenados y con buena experiencia de usuario.
         </p>
 
         {/* 6. Botones de Acción */}

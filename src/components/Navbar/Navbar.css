@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
-  background-color: #0b0f19; /* Fondo oscuro elegante */
+  background-color: #0b0f19;
   color: #ffffff;
   position: sticky;
   top: 0;
@@ -26,6 +26,10 @@
 
 .text-cyan {
   color: #00d8ff; /* Color de acento (Cyan) */
+}
+
+.text-white {
+  color: #ffffff;
 }
 
 /* =========================================

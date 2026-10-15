@@ -31,22 +31,19 @@ const Perfil = () => {
               <h3>Perfil profesional</h3>
             </div>
             <p className="card-text">
-              Ingeniero de Sistemas Comptacionales, con experiencia en la
-              docencia de más de 15 años, dictando clases de forma presencial y
-              virtual en diferentes instituciones educativas de prestigio y con
-              experiencia profesional de más de 11 años.
+              Soy estudiante de Ingeniería de Software, con interés en el
+              desarrollo web, la programación y la resolución de problemas
+              mediante tecnología.
               <br />
               <br />
-              Cuento la Certificación Internacional en Microsoft Office
-              Specialist (MOS) Excel Expert y PL - 300 Data Analyst Associate.
-              Instructor CISCO y ORACLE.
+              Durante mi formación he trabajado con tecnologías como React,
+              JavaScript, HTML, CSS, SQL, Python, Excel y Power BI, además de
+              herramientas como Git y GitHub.
               <br />
               <br />
-              Consultoría y experiencia en desarrollo de software, utilizando
-              tecnologías como React, Laravel, NodeJS, ExpressJS, MySQL,
-              PostGreSQL, etc. y en desarrollo de dashboards interactivos
-              mediante Power BI, DAX, Power Query, modelado de datos en SQL y
-              automatizaciones con Python.
+              Me interesa seguir aprendiendo, construir proyectos prácticos y
+              fortalecer mis habilidades para desarrollar soluciones útiles,
+              eficientes y bien diseñadas.
             </p>
           </div>
 
