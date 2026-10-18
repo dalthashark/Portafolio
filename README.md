@@ -1,6 +1,22 @@
-# Portafolio Personal
+# Portafolio de Sebastián Mendoza Chávez
 
-Portafolio personal desarrollado con React + Vite para presentar información profesional, habilidades técnicas, proyectos destacados y datos de contacto.
+Portafolio personal desarrollado con React y Vite para presentar mi formación, habilidades, certificaciones, proyectos y medios de contacto.
+
+## Secciones
+
+- **Inicio:** presentación personal y acceso rápido a proyectos y contacto.
+- **Sobre mí:** perfil profesional y formación académica.
+- **Proyectos:** aplicaciones Android y simulaciones de circuitos con Arduino.
+- **Habilidades:** tecnologías y conocimientos que estoy desarrollando.
+- **Certificaciones:** certificados de SENATI con acceso a sus documentos.
+- **Contacto:** correo electrónico, WhatsApp, LinkedIn y GitHub.
+
+## Características
+
+- Diseño adaptable a escritorio, tablet y móvil.
+- Tema oscuro con acentos cian y opción para alternar al tema claro.
+- Carruseles navegables para proyectos, habilidades y certificaciones.
+- Imágenes e ilustraciones locales para proyectos, certificados y habilidades.
 
 ## Tecnologías
 
@@ -11,23 +27,29 @@ Portafolio personal desarrollado con React + Vite para presentar información pr
 - CSS
 - Bootstrap
 
-## Scripts
+## Requisitos
+
+- Node.js
+- npm
+
+## Instalación y ejecución
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Descripción
+Vite mostrará en la terminal la dirección local donde puedes abrir el portafolio.
 
-Este proyecto está diseñado como base para un portfolio moderno y profesional, con una estructura clara por secciones:
+## Validación
 
-- Inicio
-- Sobre mí
-- Habilidades
-- Proyectos
-- Contacto
+```bash
+npm run lint
+npm run build
+```
 
-## Objetivo
+## Contacto
 
-Mostrar de forma visual y organizada la experiencia, conocimientos y trabajos realizados, con un enfoque limpio y amigable para clientes o reclutadores.
+- **Correo:** [seba.m.ch.2000@gmail.com](mailto:seba.m.ch.2000@gmail.com)
+- **WhatsApp:** [+51 985 116 736](https://wa.me/51985116736)
+- **GitHub:** [github.com/dalthashark](https://github.com/dalthashark)
