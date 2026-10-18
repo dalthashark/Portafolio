@@ -85,6 +85,16 @@
   color: #ffffff;
 }
 
+.info-item a.item-text {
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.info-item a.item-text:hover {
+  color: #00d8ff;
+  text-decoration: underline;
+}
+
 /* =========================================
    COLUMNA DERECHA (Formulario)
 ========================================= */

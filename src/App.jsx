@@ -1,5 +1,7 @@
 import Banner from './components/Banner/Banner';
+import Certificaciones from './components/Certificaciones/Certificaciones';
 import Contacto from './components/Contacto/Contacto';
+import Footer from './components/Footer/Footer';
 import Habilidades from './components/Habilidades/Habilidades';
 import Navbar from './components/Navbar/Navbar';
 import Perfil from './components/Perfil/Perfil';
@@ -13,9 +15,11 @@ function App() {
       <Navbar />
       <Banner />
       <Perfil />
+      <Certificaciones />
       <Habilidades />
       <Proyectos />
       <Contacto />
+      <Footer />
     </>
   );
 }

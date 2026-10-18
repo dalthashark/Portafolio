@@ -76,43 +76,30 @@ const Perfil = () => {
               {/* Ítem de Educación 1 */}
               <div className="timeline-item">
                 <div className="timeline-header">
-                  <h4>Ingeniería de Sistemas Computacionales</h4>
-                  <span className="badge badge-outline">Titulado</span>
+                  <h4>Educación primaria y secundaria</h4>
                 </div>
                 <span className="timeline-date">
-                  UNIVERSIDAD TECNOLÓGICA DEL PERÚ
+                  COLEGIO SANTO DOMINGO DE GUZMÁN
                 </span>
               </div>
 
               {/* Ítem de Educación 2 */}
               <div className="timeline-item">
                 <div className="timeline-header">
-                  <h4>Computación e Informática</h4>
-                  <span className="badge badge-outline">Titulado</span>
+                  <h4>Ingeniería Electrónica</h4>
+                  <span className="badge badge-outline">Hasta 5.º ciclo</span>
                 </div>
-                <span className="timeline-date">I.S.T CESCA</span>
+                <span className="timeline-date">
+                  UNIVERSIDAD TECNOLÓGICA DEL PERÚ (UTP)
+                </span>
               </div>
 
               {/* Ítem de Educación 3 */}
               <div className="timeline-item">
                 <div className="timeline-header">
-                  <h4>MOS Excel Expert</h4>
-                  <span className="badge badge-outline">
-                    Certificación Internacional
-                  </span>
+                  <h4>Ingeniería de Software con IA</h4>
+                  <span className="badge badge-outline">En curso · 5.º ciclo</span>
                 </div>
-                <span className="timeline-date">MICROSOFT</span>
-              </div>
-
-              {/* Ítem de Educación 4 */}
-              <div className="timeline-item">
-                <div className="timeline-header">
-                  <h4>Power BI Data Analyst Associate - PL - 300</h4>
-                  <span className="badge badge-outline">
-                    Certificación Internacional
-                  </span>
-                </div>
-                <span className="timeline-date">MICROSOFT</span>
               </div>
             </div>
           </div>

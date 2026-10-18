@@ -20,6 +20,9 @@ const Navbar = () => {
         <a href="#sobre-mi" onClick={() => setIsOpen(false)}>
           Sobre mí
         </a>
+        <a href="#certificaciones" onClick={() => setIsOpen(false)}>
+          Certificaciones
+        </a>
         <a href="#tech-stack" onClick={() => setIsOpen(false)}>
           Habilidades
         </a>
