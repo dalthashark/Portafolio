@@ -3,15 +3,20 @@ import './Banner.css';
 const Banner = () => {
   return (
     <section className="hero-section" id="inicio">
+      <span className="hero-name-backdrop" aria-hidden="true">
+        SEBASTIÁN
+      </span>
+
       <div className="hero-layout">
         <div className="hero-content">
           <p className="status-badge">
-            <span className="status-dot"></span>
+            <span className="status-dot" aria-hidden="true"></span>
             Ing. Software con AI
           </p>
 
           <h1 className="hero-title">
-            Hola, soy <span>Sebastián Mendoza Chávez</span>
+            Hola, soy
+            <span>Sebastián Mendoza Chávez</span>
           </h1>
 
           <h2 className="hero-subtitle">
@@ -37,13 +42,36 @@ const Banner = () => {
         <div className="hero-visual">
           <div className="profile-photo-container">
             <img
-              src="/sebastian-mendoza.jpg"
+              src="/sebastian-mendoza-recortado.png"
               alt="Sebastián Mendoza Chávez"
               className="profile-photo"
             />
           </div>
-          <p className="hero-photo-caption">Lima, Perú</p>
         </div>
+
+        <aside className="hero-details" aria-label="Áreas de interés">
+          <div className="hero-detail">
+            <span className="hero-detail-index">01</span>
+            <p>
+              <span>Aplicaciones</span>
+              Soluciones móviles útiles
+            </p>
+          </div>
+          <div className="hero-detail">
+            <span className="hero-detail-index">02</span>
+            <p>
+              <span>Datos e IA</span>
+              Tecnología que aprende
+            </p>
+          </div>
+          <div className="hero-detail">
+            <span className="hero-detail-index">03</span>
+            <p>
+              <span>Prototipos</span>
+              Electrónica y automatización
+            </p>
+          </div>
+        </aside>
       </div>
     </section>
   );

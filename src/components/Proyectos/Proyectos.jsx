@@ -31,9 +31,21 @@ const Proyectos = () => {
   // Arreglo de proyectos (Simulando una base de datos o API)
   const proyectosData = [
     {
+      id: 5,
+      imagen: '/proyectos/data-lab-hardware.svg',
+      titulo: 'DataLab Hardware Validation',
+      categoria: 'Herramienta de diagnóstico',
+      descripcion:
+        'Herramienta CLI en PowerShell para validar componentes y conexiones de hardware antes y después del mantenimiento, con comprobaciones de red, periféricos, audio, cámara y energía.',
+      tecnologias: ['PowerShell', 'Windows', 'Hardware QA', 'Diagnóstico'],
+      linkDemo: null,
+      linkCodigo: 'https://github.com/dalthashark/DataLab-Hardware-Validation',
+    },
+    {
       id: 1,
       imagen: '/proyectos/app-tareas-login.png',
       titulo: 'App de Gestión de Tareas',
+      categoria: 'Aplicación móvil',
       descripcion:
         'Aplicación Android para organizar actividades diarias: permite registrarse e iniciar sesión, crear, editar y eliminar tareas, y filtrarlas por estado (pendientes, en progreso o completadas). Los datos se guardan localmente para poder consultarlos sin conexión.',
       tecnologias: ['Java', 'Android Studio', 'SQLite', 'XML', 'Material Design 3'],
@@ -45,6 +57,7 @@ const Proyectos = () => {
       id: 2,
       imagen: '/proyectos/ecoreg.svg',
       titulo: 'EcoReg - Gestión de Residuos',
+      categoria: 'Aplicación móvil',
       descripcion:
         'Aplicación móvil offline-first para digitalizar la recolección de residuos. Los operarios pueden iniciar sesión, registrar el tipo y peso de los residuos, consultar los registros del día y revisar historiales y reportes mensuales.',
       tecnologias: [
@@ -64,6 +77,7 @@ const Proyectos = () => {
       id: 3,
       imagen: '/proyectos/arduino-keypad-lcd-servo.png',
       titulo: 'Circuito interactivo con Arduino',
+      categoria: 'Prototipo electrónico',
       descripcion:
         'Simulación de un circuito con Arduino UNO, teclado matricial 4×4, pantalla LCD, servomotor y buzzer. El proyecto muestra cómo integrar estos componentes en un prototipo electrónico interactivo.',
       tecnologias: [
@@ -84,6 +98,7 @@ const Proyectos = () => {
       id: 4,
       imagen: '/proyectos/arduino-office-pir-lcd.png',
       titulo: 'Sistema de detección para oficina',
+      categoria: 'Prototipo electrónico',
       descripcion:
         'Prototipo de automatización con Arduino para detectar movimiento mediante un sensor PIR y mostrar información en una pantalla LCD, con una alerta sonora mediante buzzer.',
       tecnologias: [
@@ -105,7 +120,10 @@ const Proyectos = () => {
     <section id="proyectos" className="proyectos-section">
       <div className="proyectos-container">
         <div className="proyectos-heading">
-          <h2 className="section-title">Proyectos</h2>
+          <div className="proyectos-heading-copy">
+            <p className="proyectos-kicker">PORTAFOLIO / SELECCIÓN</p>
+            <h2 className="section-title">Proyectos</h2>
+          </div>
           <div className="proyectos-carousel-controls" role="group" aria-label="Controles de proyectos">
             <button
               type="button"
@@ -139,7 +157,7 @@ const Proyectos = () => {
           aria-roledescription="carrusel"
           aria-label="Lista de proyectos destacados"
         >
-          {proyectosData.map((proyecto) => (
+          {proyectosData.map((proyecto, index) => (
             <article key={proyecto.id} className="proyecto-card">
               {/* 1. Imagen del Proyecto */}
               <div
@@ -151,6 +169,7 @@ const Proyectos = () => {
                       : ''
                 }`}
               >
+                <span className="proyecto-index">{String(index + 1).padStart(2, '0')}</span>
                 <img
                   src={proyecto.imagen}
                   alt={`Imagen representativa de ${proyecto.titulo}`}
@@ -159,6 +178,9 @@ const Proyectos = () => {
 
               {/* 2. Contenido de la Tarjeta */}
               <div className="proyecto-contenido">
+                <p className="proyecto-category">
+                  {proyecto.categoria}
+                </p>
                 <h3 className="proyecto-titulo">{proyecto.titulo}</h3>
                 <p className="proyecto-desc">{proyecto.descripcion}</p>
 

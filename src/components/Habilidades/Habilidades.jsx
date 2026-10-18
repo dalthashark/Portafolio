@@ -1,178 +1,297 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './Habilidades.css';
 
+const skillsData = [
+  {
+    id: 2,
+    categoria: 'Bases de datos',
+    imagen: '/habilidades/bases-datos.svg',
+    titulo: 'SQL: SQL Server, MySQL y PostgreSQL',
+    descripcion: 'Consultas SQL y manejo básico de bases de datos relacionales.',
+    nivel: 'Básico',
+  },
+  {
+    id: 3,
+    categoria: 'Lenguajes de programación',
+    imagen: '/habilidades/python.svg',
+    titulo: 'Python',
+    descripcion: 'Fundamentos de programación y análisis básico de datos.',
+    nivel: 'Básico',
+  },
+  {
+    id: 4,
+    categoria: 'Herramientas',
+    imagen: '/habilidades/excel.svg',
+    titulo: 'Excel',
+    descripcion: 'Organización de datos, fórmulas y tablas dinámicas.',
+    nivel: 'Básico',
+  },
+  {
+    id: 24,
+    categoria: 'Herramientas',
+    imagen: '/habilidades/power-bi.svg',
+    titulo: 'Power BI',
+    descripcion: 'Creación de visualizaciones e informes básicos de datos.',
+    nivel: 'Básico',
+  },
+  {
+    id: 5,
+    categoria: 'Desarrollo web',
+    imagen: '/habilidades/laravel.svg',
+    titulo: 'Laravel',
+    descripcion: 'Primeros pasos en desarrollo backend con Laravel.',
+    nivel: 'Básico',
+  },
+  {
+    id: 6,
+    categoria: 'Desarrollo web',
+    imagen: '/habilidades/react.svg',
+    titulo: 'React',
+    descripcion: 'Construcción de interfaces con componentes y estado.',
+    nivel: 'Básico',
+  },
+  {
+    id: 9,
+    categoria: 'Herramientas',
+    imagen: '/habilidades/github.svg',
+    titulo: 'GitHub',
+    descripcion: 'Gestión de repositorios y publicación de proyectos.',
+    nivel: 'Básico',
+  },
+  {
+    id: 10,
+    categoria: 'Lenguajes de programación',
+    imagen: '/habilidades/javascript.svg',
+    titulo: 'JavaScript',
+    descripcion: 'Fundamentos del lenguaje aplicados a proyectos web.',
+    nivel: 'Básico',
+  },
+  {
+    id: 11,
+    categoria: 'Desarrollo web',
+    imagen: '/habilidades/grid.svg',
+    titulo: 'CSS Grid',
+    descripcion: 'Distribución de contenido en diseños de cuadrícula.',
+    nivel: 'Básico',
+  },
+  {
+    id: 12,
+    categoria: 'Desarrollo web',
+    imagen: '/habilidades/flexbox.svg',
+    titulo: 'CSS Flexbox',
+    descripcion: 'Alineación y distribución de elementos en interfaces.',
+    nivel: 'Básico',
+  },
+  {
+    id: 13,
+    categoria: 'Datos e IA',
+    imagen: '/habilidades/machine-learning.svg',
+    titulo: 'Machine Learning',
+    descripcion: 'Conceptos iniciales de aprendizaje automático.',
+    nivel: 'Básico',
+  },
+  {
+    id: 14,
+    categoria: 'Herramientas',
+    imagen: '/habilidades/mobile.svg',
+    titulo: 'Android Studio',
+    descripcion: 'Desarrollo y prueba de aplicaciones Android con Java.',
+    nivel: 'Básico',
+  },
+  {
+    id: 21,
+    categoria: 'Lenguajes de programación',
+    imagen: '/habilidades/java.svg',
+    titulo: 'Java',
+    descripcion: 'Fundamentos aplicados a proyectos de aplicaciones Android.',
+    nivel: 'Básico',
+  },
+  {
+    id: 22,
+    categoria: 'Bases de datos',
+    imagen: '/habilidades/bases-datos.svg',
+    titulo: 'SQLite',
+    descripcion: 'Almacenamiento local de datos para aplicaciones móviles.',
+    nivel: 'Básico',
+  },
+  {
+    id: 23,
+    categoria: 'Desarrollo web',
+    imagen: '/habilidades/react.svg',
+    titulo: 'HTML y CSS',
+    descripcion: 'Estructura y estilos para páginas web responsivas.',
+    nivel: 'Básico',
+  },
+  {
+    id: 15,
+    categoria: 'Idiomas',
+    imagen: '/habilidades/english.svg',
+    titulo: 'Inglés',
+    descripcion: 'Comprensión y comunicación en situaciones cotidianas.',
+    nivel: 'Básico',
+  },
+  {
+    id: 16,
+    categoria: 'Hardware',
+    imagen: '/habilidades/ensamblaje.svg',
+    titulo: 'Ensamblaje de computadoras',
+    descripcion: 'Selección e instalación de componentes de hardware.',
+    nivel: 'Básico',
+  },
+  {
+    id: 17,
+    categoria: 'Hardware',
+    imagen: '/habilidades/mantenimiento.svg',
+    titulo: 'Mantenimiento de computadoras',
+    descripcion: 'Mantenimiento preventivo y revisión de equipos.',
+    nivel: 'Básico',
+  },
+  {
+    id: 18,
+    categoria: 'Hardware',
+    imagen: '/habilidades/electronica-basica.svg',
+    titulo: 'Electrónica básica',
+    descripcion: 'Conocimientos básicos de circuitos y componentes electrónicos.',
+    nivel: 'Básico',
+  },
+  {
+    id: 19,
+    categoria: 'Lenguajes de programación',
+    imagen: '/habilidades/cpp.svg',
+    titulo: 'C++',
+    descripcion: 'Fundamentos aplicados a la programación de proyectos en Tinkercad.',
+    nivel: 'Básico',
+  },
+  {
+    id: 20,
+    categoria: 'Hardware',
+    imagen: '/habilidades/arduino.svg',
+    titulo: 'Arduino',
+    descripcion: 'Prototipado de circuitos con sensores y componentes electrónicos.',
+    nivel: 'Básico',
+  },
+];
+
+const categorias = [
+  'Lenguajes de programación',
+  'Bases de datos',
+  'Desarrollo web',
+  'Datos e IA',
+  'Hardware',
+  'Herramientas',
+  'Idiomas',
+];
+
 const Habilidades = () => {
-  const habilidadesTrackRef = useRef(null);
-  const [puedeRetroceder, setPuedeRetroceder] = useState(false);
-  const [puedeAvanzar, setPuedeAvanzar] = useState(true);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(categorias[0]);
+  const [habilidadSeleccionada, setHabilidadSeleccionada] = useState(10);
+  const habilidadesVisibles = skillsData.filter(
+    (skill) => skill.categoria === categoriaSeleccionada,
+  );
+  const habilidadActiva =
+    habilidadesVisibles.find((skill) => skill.id === habilidadSeleccionada) ??
+    habilidadesVisibles[0];
 
-  const actualizarControles = () => {
-    const track = habilidadesTrackRef.current;
-
-    if (!track) {
-      return;
-    }
-
-    setPuedeRetroceder(track.scrollLeft > 1);
-    setPuedeAvanzar(track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+  const seleccionarCategoria = (categoria) => {
+    const primeraHabilidad = skillsData.find((skill) => skill.categoria === categoria);
+    setCategoriaSeleccionada(categoria);
+    setHabilidadSeleccionada(primeraHabilidad.id);
   };
-
-  const moverCarrusel = (direccion) => {
-    const track = habilidadesTrackRef.current;
-
-    if (track) {
-      track.scrollBy({
-        left: direccion * track.clientWidth,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  // Arreglo de datos: Simulamos la información que podría venir de una API
-  const skillsData = [
-    {
-      id: 2,
-      imagen: '/habilidades/bases-datos.svg',
-      titulo: 'SQL Server / MySQL / PostGreSQL / Oracle',
-      descripcion: 'SQL, T-SQL, Optimización, Procedimientos Almacenados.',
-      nivel: 'Avanzado',
-    },
-    {
-      id: 3,
-      imagen: '/habilidades/python.svg',
-      titulo: 'Python for Data Analyst',
-      descripcion: 'Pandas, NumPy, Matplotlib, Automatización, Keras.',
-      nivel: 'Avanzado',
-    },
-    {
-      id: 4,
-      imagen: '/habilidades/excel.svg',
-      titulo: 'Excel / VBA',
-      descripcion: 'Macros, Power Pivot, Power Query, Pivot Tables, Dashboards complejos.',
-      nivel: 'Experto',
-    },
-    {
-      id: 5,
-      imagen: '/habilidades/laravel.svg',
-      titulo: 'Laravel',
-      descripcion: 'Backend Developer',
-      nivel: 'Avanzado',
-    },
-    {
-      id: 6,
-      imagen: '/habilidades/react.svg',
-      titulo: 'React',
-      descripcion:
-        'Construcción de Interfaces de Usuario Modernas a partir de Componentes',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 9,
-      imagen: '/habilidades/github.svg',
-      titulo: 'GitHub',
-      descripcion: 'Repositorio en la nube.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 10,
-      imagen: '/habilidades/javascript.svg',
-      titulo: 'JavaScript',
-      descripcion:
-        'Lenguaje de programación interpretado, dialecto del estándar ECMAScript.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 11,
-      imagen: '/habilidades/grid.svg',
-      titulo: 'Grid',
-      descripcion: 'Contrucción de rejillas responsivas.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 12,
-      imagen: '/habilidades/flexbox.svg',
-      titulo: 'Flexbox',
-      descripcion:
-        'Método de diseño de página unidimensional para compaginar elementos en filas o columnas.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 13,
-      imagen: '/habilidades/machine-learning.svg',
-      titulo: 'Machine Learning',
-      descripcion: 'Algoritmos y modelos de aprendizaje automático.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 14,
-      imagen: '/habilidades/mobile.svg',
-      titulo: 'Aplicaciones móviles',
-      descripcion: 'Desarrollo de aplicaciones para dispositivos móviles.',
-      nivel: 'Aprendizaje Activo',
-    },
-    {
-      id: 15,
-      imagen: '/habilidades/english.svg',
-      titulo: 'Inglés',
-      descripcion: 'Comprensión y comunicación en situaciones cotidianas.',
-      nivel: 'Básico',
-    },
-  ];
 
   return (
     <section id="tech-stack" className="habilidades-section">
       <div className="habilidades-container">
-        <div className="habilidades-heading">
-          <h2 className="section-title">Habilidades</h2>
-          <div
-            className="habilidades-carousel-controls"
-            role="group"
-            aria-label="Controles de habilidades"
-          >
-            <button
-              type="button"
-              className="habilidades-carousel-button"
-              onClick={() => moverCarrusel(-1)}
-              disabled={!puedeRetroceder}
-              aria-label="Ver habilidades anteriores"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="habilidades-carousel-button"
-              onClick={() => moverCarrusel(1)}
-              disabled={!puedeAvanzar}
-              aria-label="Ver más habilidades"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
+        <header className="skills-intro">
+          <div>
+            <p className="skills-kicker">SKILLS / TECNOLOGÍAS</p>
+            <h2 className="skills-title">Tecnologías que uso</h2>
           </div>
-        </div>
-        <div
-          className="habilidades-carousel"
-          ref={habilidadesTrackRef}
-          onScroll={actualizarControles}
-          role="region"
-          aria-roledescription="carrusel"
-          aria-label="Lista de habilidades"
-        >
-          {skillsData.map((skill) => (
-            <article key={skill.id} className="skill-card">
-              <div className="skill-image">
-                <img src={skill.imagen} alt="" loading="lazy" />
+          <p className="skills-summary">
+            Explora las herramientas y conocimientos que voy desarrollando.
+          </p>
+        </header>
+
+        <div className="skills-dashboard">
+          <nav className="skills-categories" aria-label="Categorías de habilidades">
+            <p className="skills-panel-label">ÁREAS</p>
+            {categorias.map((categoria) => {
+              const cantidad = skillsData.filter(
+                (skill) => skill.categoria === categoria,
+              ).length;
+              const activa = categoria === categoriaSeleccionada;
+
+              return (
+                <button
+                  key={categoria}
+                  type="button"
+                  className={`skills-category${activa ? ' active' : ''}`}
+                  onClick={() => seleccionarCategoria(categoria)}
+                  aria-pressed={activa}
+                >
+                  <span className="skills-category-mark" aria-hidden="true" />
+                  <span>{categoria}</span>
+                  <span className="skills-category-count">{cantidad}</span>
+                </button>
+              );
+            })}
+          </nav>
+
+          <div
+            className="skills-workspace"
+            role="region"
+            aria-label={`Habilidades de ${categoriaSeleccionada}`}
+          >
+            <div className="skills-workspace-heading">
+              <div>
+                <p className="skills-panel-label">CATEGORÍA SELECCIONADA</p>
+                <h3>{categoriaSeleccionada}</h3>
               </div>
-              <div className="skill-body">
-                <h3 className="skill-title">{skill.titulo}</h3>
-                <p className="skill-desc">{skill.descripcion}</p>
-                <span className="skill-level">{skill.nivel}</span>
-              </div>
-            </article>
-          ))}
+              <span className="skills-result-count">
+                {String(habilidadesVisibles.length).padStart(2, '0')} HABILIDADES
+              </span>
+            </div>
+
+            <div className="skills-grid">
+              {habilidadesVisibles.map((skill) => {
+                const activa = skill.id === habilidadActiva.id;
+
+                return (
+                  <button
+                    key={skill.id}
+                    type="button"
+                    className={`skill-tile${activa ? ' active' : ''}`}
+                    onClick={() => setHabilidadSeleccionada(skill.id)}
+                    aria-pressed={activa}
+                  >
+                    <span className="skill-tile-icon">
+                      <img src={skill.imagen} alt="" />
+                    </span>
+                    <span className="skill-tile-title">{skill.titulo}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="skills-proficiency">
+              <span>NIVEL DECLARADO</span>
+              <span className="skills-proficiency-line" aria-hidden="true" />
+              <strong>{habilidadActiva.nivel}</strong>
+            </div>
+          </div>
+
+          <aside className="skills-feature" aria-live="polite">
+            <div className="skills-orbit" aria-hidden="true">
+              <span className="skills-orbit-ring skills-orbit-ring-outer" />
+              <span className="skills-orbit-ring skills-orbit-ring-inner" />
+              <img src={habilidadActiva.imagen} alt="" />
+            </div>
+            <p className="skills-feature-label">EN FOCO</p>
+            <h3>{habilidadActiva.titulo}</h3>
+            <p className="skills-feature-description">
+              {habilidadActiva.descripcion}
+            </p>
+            <span className="skills-feature-level">{habilidadActiva.nivel}</span>
+          </aside>
         </div>
       </div>
     </section>

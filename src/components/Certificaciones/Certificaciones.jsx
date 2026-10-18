@@ -71,7 +71,10 @@ const Certificaciones = () => {
     <section id="certificaciones" className="certificaciones-section">
       <div className="certificaciones-container">
         <div className="certificaciones-heading">
-          <h2 className="section-title">Certificaciones</h2>
+          <div className="certificaciones-heading-copy">
+            <p className="certificaciones-kicker">FORMACIÓN / CURSOS</p>
+            <h2 className="section-title">Certificaciones</h2>
+          </div>
           <div
             className="certificaciones-carousel-controls"
             role="group"
@@ -109,7 +112,7 @@ const Certificaciones = () => {
           aria-roledescription="carrusel"
           aria-label="Lista de certificaciones"
         >
-          {certificaciones.map((certificacion) => (
+          {certificaciones.map((certificacion, index) => (
             <article
               className="certificacion-card"
               key={certificacion.archivo}
@@ -148,6 +151,7 @@ const Certificaciones = () => {
                 </div>
               </div>
               <div className="certificacion-preview">
+                <span className="certificacion-index">{String(index + 1).padStart(2, '0')}</span>
                 <img
                   src={certificacion.vistaPrevia}
                   alt={`Vista previa del certificado ${certificacion.nombre}`}

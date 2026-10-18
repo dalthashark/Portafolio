@@ -1,7 +1,9 @@
 .site-footer {
-  padding: 1.5rem 5%;
+  padding: 2rem 5%;
   border-top: 1px solid var(--border);
-  background: var(--surface-muted);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 55%),
+    var(--page-bg);
 }
 
 .footer-container {
@@ -16,8 +18,12 @@
 
 .footer-brand {
   color: var(--text-primary);
-  font-size: 0.98rem;
-  font-weight: 700;
+  color: var(--warm-accent);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
 .brand-accent {

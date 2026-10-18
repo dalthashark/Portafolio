@@ -29,7 +29,10 @@ const Contacto = () => {
   return (
     <section id="contacto" className="contacto-section">
       <div className="contacto-container">
-        <h2 className="section-title">Trabajemos Juntos</h2>
+        <header className="contacto-banner-heading">
+          <p className="contacto-kicker">CONTACTO / COLABOREMOS</p>
+          <h2 className="section-title">Trabajemos Juntos</h2>
+        </header>
         <div className="contacto-grid">
           {/* =====================================
               COLUMNA IZQUIERDA: INFORMACIÓN
