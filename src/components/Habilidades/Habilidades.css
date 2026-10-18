@@ -1,91 +1,90 @@
-/* =========================================
-   CONTENEDOR PRINCIPAL
-========================================= */
 .habilidades-section {
-  padding: 5rem 5%;
-  background-color: #0b0f19;
   display: flex;
   justify-content: center;
+  padding: clamp(4rem, 8vw, 6.5rem) 5%;
+  background: var(--surface);
+  color: var(--text-primary);
 }
 
 .habilidades-container {
-  max-width: 1200px; /* Un poco más ancho para albergar 3 columnas cómodamente */
-  width: 100%;
+  width: min(1120px, 100%);
 }
 
-/* =========================================
-   GRID AUTOMÁTICO (Magia Responsive)
-========================================= */
 .habilidades-grid {
   display: grid;
-  /* Crea columnas automáticamente que no sean menores a 320px */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+  gap: 0.9rem;
 }
 
-/* =========================================
-   TARJETA (Card)
-========================================= */
 .skill-card {
-  background-color: #111a2e;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   display: flex;
+  min-height: 180px;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Efecto al pasar el mouse */
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border-color: rgba(110, 231, 183, 0.2);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--surface-muted);
 }
 
-/* =========================================
-   CABECERA (Ícono y Botón)
-========================================= */
 .skill-header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
 }
 
 .skill-icon {
-  width: 48px;
-  height: 48px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  width: 40px;
+  height: 40px;
+  color: var(--accent);
 }
 
-.text-cyan {
-  color: #00d8ff;
+.skill-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
-/* =========================================
-   CUERPO DE LA TARJETA (Textos)
-========================================= */
+.skill-body {
+  flex: 1;
+}
+
 .skill-title {
-  color: #ffffff;
-  font-size: 1.25rem;
+  margin: 0 0 0.55rem;
+  color: var(--text-primary);
+  font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  line-height: 1.35;
 }
 
 .skill-desc {
-  color: #8b95a1;
-  font-size: 0.95rem;
+  min-height: 0;
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.87rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
-  min-height: 50px; /* Mantiene la altura pareja aunque el texto sea corto */
 }
 
 .skill-level {
-  color: #6ee7b7;
-  font-size: 0.9rem;
-  font-weight: 600;
+  display: inline-flex;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  font-size: 0.76rem;
+  font-weight: 650;
 }

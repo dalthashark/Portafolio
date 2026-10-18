@@ -15,9 +15,9 @@ function App() {
       <Navbar />
       <Banner />
       <Perfil />
-      <Certificaciones />
-      <Habilidades />
       <Proyectos />
+      <Habilidades />
+      <Certificaciones />
       <Contacto />
       <Footer />
     </>

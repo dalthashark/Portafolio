@@ -1,23 +1,4 @@
 #root {
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  background: #071a30;
-}
-
-body {
-  color: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
+  min-height: 100vh;
 }

@@ -1,178 +1,176 @@
-/* =========================================
-   CONTENEDOR PRINCIPAL
-========================================= */
 .proyectos-section {
-  padding: 5rem 5%;
-  background-color: #0b0f19;
   display: flex;
   justify-content: center;
+  padding: clamp(4rem, 8vw, 6.5rem) 5%;
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(ellipse at 0% 100%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 38%),
+    var(--tech-grid);
+  background-size: auto, 44px 44px, 44px 44px;
+  color: var(--text-primary);
 }
 
 .proyectos-container {
-  max-width: 1200px;
-  width: 100%;
+  width: min(1120px, 100%);
 }
 
 .text-center {
-  text-align: center;
+  text-align: left;
 }
 
-/* =========================================
-   GRID (2 Columnas en PC)
-========================================= */
 .proyectos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 1.4rem;
 }
 
-/* =========================================
-   TARJETA DEL PROYECTO
-========================================= */
 .proyecto-card {
-  background-color: #111a2e;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  overflow: hidden; /* Clave para que la imagen no se salga de las curvas */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--surface);
+  box-shadow: 0 7px 24px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .proyecto-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
-/* =========================================
-   IMAGEN DEL PROYECTO
-========================================= */
+.proyecto-imagen {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 255px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+
 .proyecto-imagen img {
+  display: block;
   width: 100%;
-  height: 280px;
-  object-fit: cover; /* Evita que la captura se deforme */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+  object-fit: cover;
 }
 
 .proyecto-imagen-app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #0b0f19;
+  background: var(--surface-muted);
 }
 
 .proyecto-imagen-app img {
   width: auto;
   max-width: 100%;
-  height: 360px;
+  height: 100%;
   object-fit: contain;
-  border: 0;
+}
+
+.proyecto-imagen-circuito {
+  background: var(--surface-muted);
 }
 
 .proyecto-imagen-circuito img {
   object-fit: contain;
-  background-color: #f4f5f7;
 }
 
-/* =========================================
-   CONTENIDO Y TEXTOS
-========================================= */
 .proyecto-contenido {
-  padding: 2rem;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1; /* Empuja el resto hacia abajo */
+  padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .proyecto-titulo {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  margin: 0 0 0.7rem;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
 }
 
 .proyecto-desc {
-  color: #8b95a1;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  flex-grow: 1; /* Permite que este párrafo crezca si es necesario */
+  flex: 1;
+  margin: 0 0 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
 }
 
-/* =========================================
-   ETIQUETAS (Tags de Tecnologías)
-========================================= */
 .proyecto-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-bottom: 2rem;
+  gap: 0.45rem;
+  margin-bottom: 1.35rem;
 }
 
 .tech-tag {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #a0aab2;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 0.3rem 0.62rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 550;
 }
 
-/* =========================================
-   BOTONES DE ACCIÓN
-========================================= */
 .proyecto-links {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
 .btn-proyecto {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.5rem;
+  min-height: 42px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 650;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .btn-demo {
-  color: #00d8ff;
-  border: 1px solid #00d8ff;
-  background-color: rgba(0, 216, 255, 0.05);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--button-text);
 }
 
 .btn-demo:hover {
-  background-color: rgba(0, 216, 255, 0.15);
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
 }
 
 .btn-codigo {
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: transparent;
+  background: var(--surface);
+  color: var(--text-primary);
 }
 
 .btn-codigo:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-hover);
 }
 
-/* =========================================
-   RESPONSIVIDAD (Móviles)
-========================================= */
-@media (max-width: 600px) {
-  .proyectos-grid {
-    grid-template-columns: 1fr; /* 1 sola columna forzada */
+@media (max-width: 520px) {
+  .proyecto-imagen {
+    height: 220px;
   }
 
   .proyecto-links {
     flex-direction: column;
-  }
-
-  .btn-proyecto {
-    justify-content: center;
   }
 }
