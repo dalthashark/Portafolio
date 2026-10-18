@@ -1,13 +1,13 @@
 .sobre-mi-section {
   display: flex;
   justify-content: center;
-  padding: clamp(4rem, 8vw, 6.5rem) 5%;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 4vw, 4rem);
   background: var(--surface);
   color: var(--text-primary);
 }
 
 .sobre-mi-container {
-  width: min(1080px, 100%);
+  width: min(1240px, 100%);
 }
 
 .section-title {

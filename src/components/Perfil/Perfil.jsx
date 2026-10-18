@@ -100,6 +100,7 @@ const Perfil = () => {
                   <h4>Ingeniería de Software con IA</h4>
                   <span className="badge badge-outline">En curso · 5.º ciclo</span>
                 </div>
+                <span className="timeline-date">SENATI</span>
               </div>
             </div>
           </div>

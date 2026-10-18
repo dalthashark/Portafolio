@@ -1,6 +1,33 @@
+import { useRef, useState } from 'react';
 import './Proyectos.css';
 
 const Proyectos = () => {
+  const proyectosTrackRef = useRef(null);
+  const [puedeRetroceder, setPuedeRetroceder] = useState(false);
+  const [puedeAvanzar, setPuedeAvanzar] = useState(true);
+
+  const actualizarControles = () => {
+    const track = proyectosTrackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    setPuedeRetroceder(track.scrollLeft > 1);
+    setPuedeAvanzar(track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+  };
+
+  const moverCarrusel = (direccion) => {
+    const track = proyectosTrackRef.current;
+
+    if (track) {
+      track.scrollBy({
+        left: direccion * track.clientWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   // Arreglo de proyectos (Simulando una base de datos o API)
   const proyectosData = [
     {
@@ -77,8 +104,41 @@ const Proyectos = () => {
   return (
     <section id="proyectos" className="proyectos-section">
       <div className="proyectos-container">
-        <h2 className="section-title text-center">Proyectos Destacados</h2>
-        <div className="proyectos-grid">
+        <div className="proyectos-heading">
+          <h2 className="section-title">Proyectos</h2>
+          <div className="proyectos-carousel-controls" role="group" aria-label="Controles de proyectos">
+            <button
+              type="button"
+              className="proyectos-carousel-button"
+              onClick={() => moverCarrusel(-1)}
+              disabled={!puedeRetroceder}
+              aria-label="Ver proyectos anteriores"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="proyectos-carousel-button"
+              onClick={() => moverCarrusel(1)}
+              disabled={!puedeAvanzar}
+              aria-label="Ver más proyectos"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          className="proyectos-carousel"
+          ref={proyectosTrackRef}
+          onScroll={actualizarControles}
+          role="region"
+          aria-roledescription="carrusel"
+          aria-label="Lista de proyectos destacados"
+        >
           {proyectosData.map((proyecto) => (
             <article key={proyecto.id} className="proyecto-card">
               {/* 1. Imagen del Proyecto */}

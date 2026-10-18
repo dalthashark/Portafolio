@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem max(5%, calc((100% - 1200px) / 2));
+  padding: 1rem max(4%, calc((100% - 1320px) / 2));
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface) 94%, transparent);
   color: var(--text-primary);

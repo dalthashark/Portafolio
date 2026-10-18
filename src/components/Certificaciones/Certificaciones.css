@@ -1,7 +1,7 @@
 .certificaciones-section {
   display: flex;
   justify-content: center;
-  padding: clamp(4rem, 8vw, 6.5rem) 5%;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 4vw, 4rem);
   background-color: var(--page-bg);
   background-image:
     radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34%),
@@ -11,17 +11,84 @@
 }
 
 .certificaciones-container {
-  width: min(1120px, 100%);
+  width: min(1320px, 100%);
 }
 
-.certificaciones-grid {
+.certificaciones-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.certificaciones-heading .section-title {
+  margin: 0;
+}
+
+.certificaciones-carousel-controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.65rem;
+}
+
+.certificaciones-carousel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.certificaciones-carousel-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.certificaciones-carousel-button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.certificaciones-carousel-button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.certificaciones-carousel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  grid-auto-columns: calc((100% - 1.15rem) / 2);
+  grid-auto-flow: column;
   gap: 1.15rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.certificaciones-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .certificacion-card {
+  min-width: 0;
   display: grid;
+  scroll-snap-align: start;
   grid-template-columns: minmax(0, 1fr) minmax(105px, 0.72fr);
   align-items: center;
   gap: 1.1rem;
@@ -114,6 +181,19 @@
 }
 
 @media (max-width: 480px) {
+  .certificaciones-heading {
+    gap: 0.75rem;
+  }
+
+  .certificaciones-carousel-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .certificaciones-carousel {
+    grid-auto-columns: 100%;
+  }
+
   .certificacion-card {
     grid-template-columns: minmax(0, 1fr) 104px;
     gap: 0.75rem;

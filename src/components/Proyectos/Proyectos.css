@@ -1,7 +1,7 @@
 .proyectos-section {
   display: flex;
   justify-content: center;
-  padding: clamp(4rem, 8vw, 6.5rem) 5%;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 4vw, 4rem);
   background-color: var(--page-bg);
   background-image:
     radial-gradient(ellipse at 0% 100%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 38%),
@@ -11,20 +11,81 @@
 }
 
 .proyectos-container {
-  width: min(1120px, 100%);
+  width: min(1320px, 100%);
 }
 
-.text-center {
-  text-align: left;
+.proyectos-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-.proyectos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+.proyectos-heading .section-title {
+  margin: 0;
+}
+
+.proyectos-carousel-controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.65rem;
+}
+
+.proyectos-carousel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.proyectos-carousel-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.proyectos-carousel-button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.proyectos-carousel-button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.proyectos-carousel {
+  display: flex;
   gap: 1.4rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.proyectos-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .proyecto-card {
+  flex: 0 0 calc((100% - 1.4rem) / 2);
+  min-width: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -43,39 +104,77 @@
 }
 
 .proyecto-imagen {
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 255px;
   border-bottom: 1px solid var(--border);
-  background: var(--surface-muted);
+  background-color: var(--surface-muted);
+  background-image: radial-gradient(
+    ellipse at 50% 45%,
+    color-mix(in srgb, var(--accent) 18%, transparent),
+    transparent 68%
+  );
+}
+
+.proyecto-imagen::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: var(--tech-grid);
+  content: '';
+  opacity: 0.65;
 }
 
 .proyecto-imagen img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 0.75rem;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.proyecto-card:hover .proyecto-imagen img {
+  transform: scale(1.035);
 }
 
 .proyecto-imagen-app {
-  background: var(--surface-muted);
+  background-image:
+    radial-gradient(
+      ellipse at 50% 45%,
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      transparent 68%
+    );
 }
 
 .proyecto-imagen-app img {
   width: auto;
-  max-width: 100%;
-  height: 100%;
+  max-width: calc(100% - 2rem);
+  height: calc(100% - 1.5rem);
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  border-radius: 10px;
+  background: var(--surface);
   object-fit: contain;
 }
 
 .proyecto-imagen-circuito {
-  background: var(--surface-muted);
+  background-image:
+    radial-gradient(
+      ellipse at 50% 45%,
+      color-mix(in srgb, var(--accent) 15%, transparent),
+      transparent 68%
+    );
 }
 
 .proyecto-imagen-circuito img {
-  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .proyecto-contenido {
@@ -166,6 +265,24 @@
 }
 
 @media (max-width: 520px) {
+  .proyectos-heading {
+    gap: 0.75rem;
+  }
+
+  .proyectos-carousel-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .proyectos-carousel {
+    gap: 1rem;
+  }
+
+  .proyecto-card {
+    flex-basis: 100%;
+    scroll-snap-align: start;
+  }
+
   .proyecto-imagen {
     height: 220px;
   }

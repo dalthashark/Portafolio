@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import './Certificaciones.css';
 
 const certificaciones = [
@@ -40,11 +41,74 @@ const certificaciones = [
 ];
 
 const Certificaciones = () => {
+  const certificacionesTrackRef = useRef(null);
+  const [puedeRetroceder, setPuedeRetroceder] = useState(false);
+  const [puedeAvanzar, setPuedeAvanzar] = useState(true);
+
+  const actualizarControles = () => {
+    const track = certificacionesTrackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    setPuedeRetroceder(track.scrollLeft > 1);
+    setPuedeAvanzar(track.scrollLeft + track.clientWidth < track.scrollWidth - 1);
+  };
+
+  const moverCarrusel = (direccion) => {
+    const track = certificacionesTrackRef.current;
+
+    if (track) {
+      track.scrollBy({
+        left: direccion * track.clientWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <section id="certificaciones" className="certificaciones-section">
       <div className="certificaciones-container">
-        <h2 className="section-title">Certificaciones</h2>
-        <div className="certificaciones-grid">
+        <div className="certificaciones-heading">
+          <h2 className="section-title">Certificaciones</h2>
+          <div
+            className="certificaciones-carousel-controls"
+            role="group"
+            aria-label="Controles de certificaciones"
+          >
+            <button
+              type="button"
+              className="certificaciones-carousel-button"
+              onClick={() => moverCarrusel(-1)}
+              disabled={!puedeRetroceder}
+              aria-label="Ver certificaciones anteriores"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="certificaciones-carousel-button"
+              onClick={() => moverCarrusel(1)}
+              disabled={!puedeAvanzar}
+              aria-label="Ver más certificaciones"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          className="certificaciones-carousel"
+          ref={certificacionesTrackRef}
+          onScroll={actualizarControles}
+          role="region"
+          aria-roledescription="carrusel"
+          aria-label="Lista de certificaciones"
+        >
           {certificaciones.map((certificacion) => (
             <article
               className="certificacion-card"
