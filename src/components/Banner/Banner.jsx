@@ -42,7 +42,7 @@ const Banner = () => {
         <div className="hero-visual">
           <div className="profile-photo-container">
             <img
-              src="/sebastian-mendoza-recortado.png"
+              src="/sebastian-mendoza-perfil.png?v=2"
               alt="Sebastián Mendoza Chávez"
               className="profile-photo"
             />
