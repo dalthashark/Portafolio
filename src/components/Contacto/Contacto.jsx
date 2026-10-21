@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 import './Contacto.css';
 
 const Contacto = () => {
@@ -8,6 +10,8 @@ const Contacto = () => {
     email: '',
     mensaje: '',
   });
+
+  const [cargando, setCargando] = useState(false);
 
   // Función para manejar los cambios en los inputs
   const manejarCambio = (e) => {
@@ -19,11 +23,54 @@ const Contacto = () => {
   };
 
   // Función para simular el envío
-  const manejarEnvio = (e) => {
+  const manejarEnvio = async (e) => {
     e.preventDefault();
-    alert(`¡Gracias por tu mensaje, ${formulario.nombre}! Te contactaré pronto.`);
-    // Limpiamos el formulario después de enviar
-    setFormulario({ nombre: '', email: '', mensaje: '' });
+    setCargando(true);
+
+    try {
+      const templateParams = {
+        nombre: formulario.nombre,
+        email: formulario.email,
+        mensaje: formulario.mensaje,
+        // Alias comunes en plantillas de EmailJS
+        message: formulario.mensaje,
+        name: formulario.nombre,
+        from_name: formulario.nombre,
+        from_email: formulario.email,
+        reply_to: formulario.email
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      Swal.fire({
+        title: '¡Mensaje Enviado!',
+        text: 'Gracias por contactarme. Te respondere a la brevedad.',
+        icon: 'success',
+        confirmButtonColor: '#00d8ff',
+        background: '#111a2e',
+        color: '#ffffff'
+      });
+
+      setFormulario({ nombre: '', email: '', mensaje: '' });
+
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente.',
+        icon: 'error',
+        confirmButtonColor: '#00d8ff',
+        background: '#111a2e',
+        color: '#ffffff'
+      });
+    } finally {
+      setCargando(false);
+    }
   };
 
   return (
@@ -228,8 +275,8 @@ const Contacto = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-submit">
-                Enviar Mensaje
+              <button type="submit" className="btn-submit" disabled={cargando}>
+                {cargando ? 'Enviando...' : 'Enviar Mensaje'}
               </button>
             </form>
           </div>
@@ -238,5 +285,4 @@ const Contacto = () => {
     </section>
   );
 };
-
 export default Contacto;
